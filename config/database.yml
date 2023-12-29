@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  username: mini_market
+  password: minimarket123
+
+development:
+  <<: *default
+  database: mini_market_dev
+
+test:
+  <<: *default
+  database: mini_market_test
+
+production:
+  <<: *default
+  database: mini_market
+  
