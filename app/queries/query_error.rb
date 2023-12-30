@@ -13,4 +13,15 @@ class QueryError < StandardError
   def self.invalid_current_page
     QueryError.new I18n.t('query.errors.invalid_current_page')
   end
+
+  def self.invalid_attribute_sorting(wrong_attribute, valid_attributes)
+    QueryError.new I18n.t(
+      'query.errors.invalid_attribute_sorting',
+      wrong_attribute: wrong_attribute,
+      valid_attributes: valid_attributes)
+  end
+
+  def self.invalid_order
+    QueryError.new I18n.t('query.errors.invalid_order')
+  end
 end

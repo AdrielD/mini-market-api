@@ -4,3 +4,5 @@ en:
     errors:
       invalid_page_size:  'page_size must be a number higher than 1'
       invalid_current_page: 'current_page must be a number higher than 1'
+      invalid_attribute_sorting: 'sort_by %{wrong_attribute} is not valid. Valid attributes are: %{valid_attributes}'
+      invalid_order: "order must be either 'asc' or 'desc'"

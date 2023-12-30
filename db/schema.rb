@@ -24,7 +24,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_29_153600) do
     t.string "name", null: false
     t.text "description", default: "", null: false
     t.bigint "category_id", null: false
-    t.integer "price", default: 0, null: false
+    t.decimal "price", precision: 10, scale: 2, default: "0.0", null: false
     t.boolean "active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

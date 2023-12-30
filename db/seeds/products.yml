@@ -1,29 +1,59 @@
-- name: 'Peperoni Pizza'
+- name: 'PepperOni Pizza'
   description: 'The best flavor of pizza'
   category: 'Food'
-  price: 10.50
+  price: 51.50
 
-- name: 'IPA Beer'
+- name: 'Açaí Power'
+  description: 'A cold Amazonian purple cream'
+  category: 'Food'
+  price: 16.90
+
+- name: 'Madness IPA Beer'
   description: 'A delicious sour beer'
   category: 'Drink'
   price: 6.80
 
-- name: 'Teethbrush'
-  description: 'Needed after eating that pizza'
-  category: 'Hygiene'
-  price: 2.00
+- name: 'Hyper Blast Ultra Coffee'
+  description: 'Strong black coffee, just as we need it'
+  category: 'Drink'
+  price: 12.30
 
-- name: 'World Travel'
+- name: 'ClearSmile X'
+  description: 'A much needed toothpaste after eating all that stuff'
+  category: 'Hygiene'
+  price: 5.00
+
+- name: 'SilkySkin'
+  description: 'Moisturize, moisturize, Moisturize'
+  category: 'Hygiene'
+  price: 35.00
+
+- name: "Hermit's World Travel"
   description: 'Read about nice places to visit'
   category: 'Magazine'
   price: 13.70
+
+- name: 'TopRock'
+  description: 'Best places for outdoor climbing'
+  category: 'Magazine'
+  price: 12.90
 
 - name: 'BananaPhone'
   description: 'A next gen smartphone'
   category: 'Technology'
   price: 200.00
 
-- name: 'Rubber Band Pack (100)'
+- name: 'GamerStation'
+  description: "You won't never need to upgrade it"
+  category: 'Technology'
+  price: 5000.00
+
+- name: 'Strechy Rubber Band Pack (100)'
   description: 'They are never enough'
   category: 'Office'
   price: 6.30
+
+- name: 'CoolColor Pen - Blue'
+  description: 'In case someone runs out of keyboards'
+  category: 'Office'
+  price: 2.70
