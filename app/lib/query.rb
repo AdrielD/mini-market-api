@@ -10,6 +10,10 @@ class Query
     [:page_size, :current_page, :sort_by, :order]
   end
 
+  def self.valid_sortable_attributes(*attributes)
+    @@valid_sortable_attributes = attributes.map{ |attr| attr.to_s }
+  end
+
   def initialize(params)
     @page_size = validate_page_size(params[:page_size])
     @current_page = validate_current_page(params[:current_page])
@@ -49,10 +53,10 @@ class Query
     current_page_param
   end
 
-  def validate_sort_by(param, valid_attributes = ['id'])
+  def validate_sort_by(param)
     return DEFAULT_SORT_BY if param.blank?
-    unless valid_attributes.include?(param)
-      raise ApiError.invalid_attribute_sorting(param, valid_attributes)
+    unless @@valid_sortable_attributes.include?(param)
+      raise ApiError.invalid_attribute_sorting(param, @@valid_sortable_attributes)
     end
     param
   end

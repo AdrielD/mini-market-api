@@ -1,10 +1,7 @@
 class ProductsQuery < Query
-  def paginate
-    super(Product)
-  end
+  valid_sortable_attributes :name, :price, :category_id, :created_at, :updated_at
 
-  def validate_sort_by(param)
-    valid_attributes = ['name', 'price', 'category_id', 'created_at', 'updated_at']
-    super(param, valid_attributes)
+  def paginate
+    super(Product.order("#{sort_by} #{order}"))
   end
 end
