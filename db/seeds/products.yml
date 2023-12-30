@@ -1,0 +1,29 @@
+- name: 'Peperoni Pizza'
+  description: 'The best flavor of pizza'
+  category: 'Food'
+  price: 10.50
+
+- name: 'IPA Beer'
+  description: 'A delicious sour beer'
+  category: 'Drink'
+  price: 6.80
+
+- name: 'Teethbrush'
+  description: 'Needed after eating that pizza'
+  category: 'Hygiene'
+  price: 2.00
+
+- name: 'World Travel'
+  description: 'Read about nice places to visit'
+  category: 'Magazine'
+  price: 13.70
+
+- name: 'BananaPhone'
+  description: 'A next gen smartphone'
+  category: 'Technology'
+  price: 200.00
+
+- name: 'Rubber Band Pack (100)'
+  description: 'They are never enough'
+  category: 'Office'
+  price: 6.30

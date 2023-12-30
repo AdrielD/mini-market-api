@@ -1,9 +1,18 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+categories_file = Rails.root.join('db', 'seeds', 'categories.yml')
+categories = YAML::load_file(categories_file)
+puts categories
+categories.each do |c|
+  Category.create(name: c['name'])
+end
+
+products_file = Rails.root.join('db', 'seeds', 'products.yml')
+products = YAML::load_file(products_file)
+products.each do |p|
+  c = Category.find_by(name: p['category'])
+  Product.create(
+    name: p['name'],
+    description: p['description'],
+    category_id: c.id,
+    price: p['price']
+  )
+end
