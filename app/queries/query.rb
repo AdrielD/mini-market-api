@@ -38,25 +38,28 @@ class Query
   def validate_page_size(param)
     return DEFAULT_PAGE_SIZE if param.blank?
     page_size_param = param.to_i
-    raise QueryError.invalid_page_size if page_size_param <= 0
+    raise ApiError.invalid_page_size if page_size_param <= 0
     page_size_param
   end
 
   def validate_current_page(param)
     return DEFAULT_CURRENT_PAGE if param.blank?
     current_page_param = param.to_i
-    raise QueryError.invalid_current_page if current_page_param <= 0
+    raise ApiError.invalid_current_page if current_page_param <= 0
     current_page_param
   end
 
-  def validate_sort_by(param)
+  def validate_sort_by(param, valid_attributes = ['id'])
     return DEFAULT_SORT_BY if param.blank?
+    unless valid_attributes.include?(param)
+      raise ApiError.invalid_attribute_sorting(param, valid_attributes)
+    end
     param
   end
 
   def validate_order(param)
     return DEFAULT_ORDER if param.blank?
-    raise QueryError.invalid_order unless ['ASC', 'DESC'].include?(param.upcase)
-    param
+    raise ApiError.invalid_order unless ['ASC', 'DESC'].include?(param.upcase)
+    param.upcase
   end
 end

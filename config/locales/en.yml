@@ -1,6 +1,6 @@
 en:
   successful_health_check: 'Ahoy! This API is alive and well! :D'
-  query:
+  api:
     errors:
       invalid_page_size:  'page_size must be a number higher than 1'
       invalid_current_page: 'current_page must be a number higher than 1'

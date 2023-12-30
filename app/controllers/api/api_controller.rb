@@ -1,6 +1,6 @@
 class Api::ApiController < ApplicationController
   rescue_from StandardError, with: :generic_error_handler
-  rescue_from QueryError, with: :query_error_handler
+  rescue_from ApiError, with: :query_error_handler
 
   def health_check
     render json: { message: I18n.t('successful_health_check') }, status: :ok

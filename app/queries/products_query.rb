@@ -4,10 +4,7 @@ class ProductsQuery < Query
   end
 
   def validate_sort_by(param)
-    valid_attributes = ['name', 'price', 'created_at', 'updated_at']
-    unless valid_attributes.include?(param)
-      raise QueryError.invalid_attribute_sorting(param, valid_attributes)
-    end
-    super(param)
+    valid_attributes = ['name', 'price', 'category_id', 'created_at', 'updated_at']
+    super(param, valid_attributes)
   end
 end
