@@ -20,8 +20,4 @@ class Api::ApiController < ApplicationController
   def query_error_handler(exception)
     generic_error_handler(exception, exception.status)
   end
-
-  def permitted_query_params
-    params.permit(Query.params)
-  end
 end

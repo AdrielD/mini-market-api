@@ -6,7 +6,7 @@ class Query
 
   attr_accessor :page_size, :current_page, :sort_by, :order
 
-  def self.params
+  def self.permitted_params
     [:page_size, :current_page, :sort_by, :order]
   end
 
@@ -26,11 +26,13 @@ class Query
   end
 
   def execute
-    paginate(@@entity.order("#{sort_by} #{order}"))
+    query = @@entity
+    query = query.order("#{sort_by} #{order}")
+    paginate(query)
   end
 
   def paginate(results)
-    total = results.count
+    total = results.size
     pages = total / page_size + (total % page_size > 0 ? 1 : 0)
     entries = results
                 .offset(page_size * (current_page - 1))
