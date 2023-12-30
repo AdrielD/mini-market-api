@@ -10,6 +10,10 @@ class Query
     [:page_size, :current_page, :sort_by, :order]
   end
 
+  def self.entity(entity)
+    @@entity = entity
+  end
+
   def self.valid_sortable_attributes(*attributes)
     @@valid_sortable_attributes = attributes.map{ |attr| attr.to_s }
   end
@@ -21,11 +25,14 @@ class Query
     @order = validate_order(params[:order])
   end
 
+  def execute
+    paginate(@@entity.order("#{sort_by} #{order}"))
+  end
+
   def paginate(results)
     total = results.count
     pages = total / page_size + (total % page_size > 0 ? 1 : 0)
     entries = results
-                .order("#{sort_by} #{order}")
                 .offset(page_size * (current_page - 1))
                 .take(page_size)
 
