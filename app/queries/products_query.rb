@@ -2,26 +2,37 @@ class ProductsQuery < Query
   entity Product
   valid_sortable_attributes :name, :price, :category_id, :created_at, :updated_at
 
-  attr_accessor :category_id
+  attr_accessor :category_id, :q
 
   def self.permitted_params
-    super << [:category_id]
+    super << [:category_id, :q]
   end
 
   def initialize(params)
-    @category_id = params[:category_id].present? ? params[:category_id].to_i : nil
+    @category_id = params[:category_id]
+    @q = params[:q]
     super(params)
   end
 
   def execute
-    if category_id.blank?
-      super
-    else
-      query = @@entity
-                .joins(:category)
-                .select('products.*, categories.name as category_name')
-                .where(category_id: category_id)
-      query = query.order("#{sort_by} #{order}")
-    end
+    @query = @query
+              .joins(:category)
+              .select('products.*')
+              .select('categories.name as category_name')
+
+    with_name_text_search.by_category
+    super
+  end
+
+  protected
+
+  def with_name_text_search
+    @query = @query.search_name(q) unless q.blank?
+    self
+  end
+
+  def by_category
+    @query = @query.where(category_id: category_id) unless category_id.blank?
+    self
   end
 end

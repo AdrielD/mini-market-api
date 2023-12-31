@@ -17,13 +17,21 @@ class Query
   end
 
   def initialize(params)
+    @query = @@entity
     @sort_by = validate_sort_by(params[:sort_by])
     @order = validate_order(params[:order])
   end
 
   def execute
-    query = @@entity
-    query = query.order("#{sort_by} #{order}")
+    self.order_by_attribute
+    @query
+  end
+
+  protected
+
+  def order_by_attribute
+    @query = @query.order("#{sort_by} #{order}")
+    self
   end
 
   private
