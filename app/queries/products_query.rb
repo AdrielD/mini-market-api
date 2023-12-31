@@ -22,7 +22,6 @@ class ProductsQuery < Query
                 .select('products.*, categories.name as category_name')
                 .where(category_id: category_id)
       query = query.order("#{sort_by} #{order}")
-      paginate(query)
     end
   end
 end

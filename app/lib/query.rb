@@ -1,13 +1,11 @@
 class Query
-  DEFAULT_PAGE_SIZE = 15
-  DEFAULT_CURRENT_PAGE = 1
   DEFAULT_SORT_BY = 'id'
   DEFAULT_ORDER = 'ASC'
 
-  attr_accessor :page_size, :current_page, :sort_by, :order
+  attr_accessor :sort_by, :order
 
   def self.permitted_params
-    [:page_size, :current_page, :sort_by, :order]
+    [:sort_by, :order]
   end
 
   def self.entity(entity)
@@ -19,8 +17,6 @@ class Query
   end
 
   def initialize(params)
-    @page_size = validate_page_size(params[:page_size])
-    @current_page = validate_current_page(params[:current_page])
     @sort_by = validate_sort_by(params[:sort_by])
     @order = validate_order(params[:order])
   end
@@ -28,39 +24,9 @@ class Query
   def execute
     query = @@entity
     query = query.order("#{sort_by} #{order}")
-    paginate(query)
-  end
-
-  def paginate(results)
-    total = results.size
-    pages = total / page_size + (total % page_size > 0 ? 1 : 0)
-    entries = results
-                .offset(page_size * (current_page - 1))
-                .take(page_size)
-
-    {
-      total_pages: pages,
-      page_size: page_size,
-      current_page: current_page,
-      entries: entries
-    }
   end
 
   private
-
-  def validate_page_size(param)
-    return DEFAULT_PAGE_SIZE if param.blank?
-    page_size_param = param.to_i
-    raise ApiError.invalid_page_size if page_size_param <= 0
-    page_size_param
-  end
-
-  def validate_current_page(param)
-    return DEFAULT_CURRENT_PAGE if param.blank?
-    current_page_param = param.to_i
-    raise ApiError.invalid_current_page if current_page_param <= 0
-    current_page_param
-  end
 
   def validate_sort_by(param)
     return DEFAULT_SORT_BY if param.blank?
