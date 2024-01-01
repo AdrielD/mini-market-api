@@ -6,3 +6,6 @@ en:
       invalid_current_page: 'current_page must be a number higher than 1'
       invalid_attribute_sorting: 'sort_by %{wrong_attribute} is not valid. Valid attributes are: %{valid_attributes}'
       invalid_order: "order must be either 'asc' or 'desc'"
+      categories:
+        name_already_exists: 'there is already a category with this name'
+        name_is_empty: 'there was no name provided'

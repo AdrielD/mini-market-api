@@ -11,12 +11,12 @@ class Api::V1::ProductsController < Api::ApiController
   end
 
   def create
-    product = Products::Create.new.call(params)
+    product = Products::Create.new(permitted_product_params).call
     render json: product, status: :ok
   end
 
   def update
-    product = Products::Update.new.call(params)
+    product = Products::Update.new(permitted_product_params).call
     render json: product, status: :ok
   end
 
@@ -27,7 +27,7 @@ class Api::V1::ProductsController < Api::ApiController
     params.permit(merged_params)
   end
 
-  def permitted_create_params
-    parasm.permit(:name, :description, :category_id, price)
+  def permitted_product_params
+    parasm.permit(:id, :name, :description, :category_id, price)
   end
 end

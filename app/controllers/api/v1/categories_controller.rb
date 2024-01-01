@@ -11,12 +11,12 @@ class Api::V1::CategoriesController < Api::ApiController
   end
 
   def create
-    category = Categories::Create.new.call(params)
+    category = Categories::Create.new(permitted_category_params).call
     render json: category, status: :ok
   end
 
   def update
-    category = Categories::Update.new.call(params)
+    category = Categories::Update.new(permitted_category_params).call
     render json: category, status: :ok
   end
 
@@ -27,7 +27,7 @@ class Api::V1::CategoriesController < Api::ApiController
     params.permit(merged_params)
   end
 
-  def permitted_create_params
-    params.permit(:name)
+  def permitted_category_params
+    params.permit(:id, :name)
   end
 end
