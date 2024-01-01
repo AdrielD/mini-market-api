@@ -15,6 +15,11 @@ class Api::V1::ProductsController < Api::ApiController
     render json: product, status: :ok
   end
 
+  def update
+    product = Products::Update.new.call(params)
+    render json: product, status: :ok
+  end
+
   private
 
   def permitted_query_params

@@ -15,6 +15,11 @@ class Api::V1::CategoriesController < Api::ApiController
     render json: category, status: :ok
   end
 
+  def update
+    category = Categories::Update.new.call(params)
+    render json: category, status: :ok
+  end
+
   private
 
   def permitted_query_params
