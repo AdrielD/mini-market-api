@@ -20,6 +20,11 @@ class Api::V1::ProductsController < Api::ApiController
     render json: product, status: :ok
   end
 
+  def destroy
+    result = Products::Delete.new(permitted_product_params).call
+    render json: result, status: :ok
+  end
+
   private
 
   def permitted_query_params
@@ -28,6 +33,6 @@ class Api::V1::ProductsController < Api::ApiController
   end
 
   def permitted_product_params
-    parasm.permit(:id, :name, :description, :category_id, price)
+    params.permit(:id, :name, :description, :category_id, :price)
   end
 end

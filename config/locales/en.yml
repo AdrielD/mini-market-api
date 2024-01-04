@@ -10,3 +10,7 @@ en:
         name_already_exists: 'there is already a category with this name'
         name_is_empty: 'there was no name provided'
         category_not_empty: 'there are products using this category, cannot delete it'
+      products:
+        name_is_empty: 'there was no name provided'
+        inexistent_category: 'provided category_id does not exist'
+        invalid_price: 'proce must be a number higher than 0.0'
