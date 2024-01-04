@@ -12,12 +12,17 @@ class Api::V1::CategoriesController < Api::ApiController
 
   def create
     category = Categories::Create.new(permitted_category_params).call
-    render json: category, status: :ok
+    render json: category, status: :created
   end
 
   def update
     category = Categories::Update.new(permitted_category_params).call
     render json: category, status: :ok
+  end
+
+  def destroy
+    result = Categories::Delete.new(permitted_category_params).call
+    render json: result, status: :ok
   end
 
   private

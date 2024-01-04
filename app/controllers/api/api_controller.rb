@@ -1,6 +1,7 @@
 class Api::ApiController < ApplicationController
   rescue_from StandardError, with: :generic_error_handler
   rescue_from ApiError, with: :query_error_handler
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def health_check
     render json: { message: I18n.t('successful_health_check') }, status: :ok
@@ -19,5 +20,9 @@ class Api::ApiController < ApplicationController
 
   def query_error_handler(exception)
     generic_error_handler(exception, exception.status)
+  end
+
+  def record_not_found(exception)
+    generic_error_handler(exception, :not_found)
   end
 end

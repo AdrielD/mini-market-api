@@ -12,7 +12,7 @@ class Api::V1::ProductsController < Api::ApiController
 
   def create
     product = Products::Create.new(permitted_product_params).call
-    render json: product, status: :ok
+    render json: product, status: :created
   end
 
   def update

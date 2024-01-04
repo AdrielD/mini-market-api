@@ -9,3 +9,4 @@ en:
       categories:
         name_already_exists: 'there is already a category with this name'
         name_is_empty: 'there was no name provided'
+        category_not_empty: 'there are products using this category, cannot delete it'
