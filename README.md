@@ -1,24 +1,7 @@
-# README
+1) Clone project
+2) Run `bundle install`
+3) Run `bundle exec rails s`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Public Postman API collection:
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+https://www.postman.com/AdrielD/workspace/adinelli/collection/1850349-c3e69ebc-4a8e-422f-bb19-4533b251328f

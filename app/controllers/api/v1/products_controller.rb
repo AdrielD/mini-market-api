@@ -6,7 +6,7 @@ class Api::V1::ProductsController < Api::ApiController
   end
 
   def show
-    product = Product.find(params[:id])
+    product = Product.find(permitted_product_params[:id])
     render json: product, status: :ok
   end
 

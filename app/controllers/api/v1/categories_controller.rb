@@ -6,7 +6,7 @@ class Api::V1::CategoriesController < Api::ApiController
   end
 
   def show
-    category = Category.find(params[:id])
+    category = Category.find(permitted_category_params[:id])
     render json: category, status: :ok
   end
 
