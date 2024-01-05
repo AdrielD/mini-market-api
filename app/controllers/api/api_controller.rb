@@ -1,6 +1,6 @@
 class Api::ApiController < ApplicationController
   rescue_from StandardError, with: :generic_error_handler
-  rescue_from ApiError, with: :query_error_handler
+  rescue_from ApiExceptions::ApiError, with: :query_error_handler
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
   def health_check
@@ -11,7 +11,7 @@ class Api::ApiController < ApplicationController
 
   def generic_error_handler(exception, status = :internal_server_error)
     message = {
-      error: exception,
+      error: exception.message,
       url: request.url,
       params: params.except(:action, :controller)
     }

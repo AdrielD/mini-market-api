@@ -9,7 +9,7 @@ class Categories::Delete < Service
 
   def validate()
     products_in_category = Product.where(category_id: id)
-    raise CategoriesError.category_not_empty if products_in_category.present?
+    raise CategoryExceptions::CategoryNotEmpty if products_in_category.present?
   end
 
   def perform()

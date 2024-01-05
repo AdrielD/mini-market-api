@@ -8,10 +8,10 @@ class Categories::Create < Service
   private
 
   def validate()
-    raise CategoriesError.name_is_empty if name.blank?
+    raise CategoryExceptions::NameIsEmpty if name.blank?
 
     category = Category.find_by(name: name)
-    raise CategoriesError.name_already_exists if category.present?
+    raise CategoryExceptions::NameAlreadyExists if category.present?
   end
 
   def perform()

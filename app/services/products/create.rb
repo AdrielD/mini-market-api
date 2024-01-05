@@ -11,12 +11,12 @@ class Products::Create < Service
   private
 
   def validate
-    raise ProductsError.name_is_empty if name.blank?
+    raise ProductExceptions::NameIsEmpty if name.blank?
 
     category = Category.find_by(id: category_id)
-    raise ProductsError.inexistent_category if category.blank?
+    raise ProductExceptions::InexistentCategory if category.blank?
 
-    raise ProductsError.invalid_price if price.zero?
+    raise ProductExceptions::InvalidPrice if price.zero?
   end
 
   def perform

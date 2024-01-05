@@ -13,4 +13,4 @@ en:
       products:
         name_is_empty: 'there was no name provided'
         inexistent_category: 'provided category_id does not exist'
-        invalid_price: 'proce must be a number higher than 0.0'
+        invalid_price: 'price must be a number higher than 0.0'

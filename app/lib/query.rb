@@ -39,14 +39,14 @@ class Query
   def validate_sort_by(param)
     return DEFAULT_SORT_BY if param.blank?
     unless @@valid_sortable_attributes.include?(param)
-      raise ApiError.invalid_attribute_sorting(param, @@valid_sortable_attributes)
+      raise ApiExceptions::InvalidAttributeSorting.new(param, @@valid_sortable_attributes)
     end
     param
   end
 
   def validate_order(param)
     return DEFAULT_ORDER if param.blank?
-    raise ApiError.invalid_order unless ['ASC', 'DESC'].include?(param.upcase)
+    raise ApiExceptions::InvalidOrder unless ['ASC', 'DESC'].include?(param.upcase)
     param.upcase
   end
 end
