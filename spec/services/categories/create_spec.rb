@@ -14,6 +14,10 @@ RSpec.context 'Services' do
         expect{ described_class.new({}).call }
           .to raise_error(CategoryExceptions::NameIsEmpty)
           .and change { Category.count }.by(0)
+
+        expect{ described_class.new({ name: '' }).call }
+          .to raise_error(CategoryExceptions::NameIsEmpty)
+          .and change { Category.count }.by(0)
       end
 
       it 'category with provided name already exists' do
