@@ -2,10 +2,12 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  # host: localhost
-  host: db
-  username: postgres
-  password: postgres
+  host: localhost
+  username: mini_market
+  password: minimarket123
+  # host: db
+  # username: postgres
+  # password: postgres
 
 development:
   <<: *default
