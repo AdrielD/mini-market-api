@@ -10,9 +10,6 @@ class Categories::Update < Service
 
   def validate()
     raise CategoryExceptions::NameIsEmpty if name.blank?
-
-    category = Category.find_by(name: name)
-    raise CategoryExceptions::NameAlreadyExists if category.present?
   end
 
   def perform()
