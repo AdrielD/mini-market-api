@@ -6,7 +6,7 @@ class Products::Update < Service
     @name = params[:name]
     @description = params[:description]
     @category_id = params[:category_id]
-    @price = params[:price]
+    @price = params[:price].to_f
   end
 
   private

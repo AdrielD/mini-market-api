@@ -18,7 +18,7 @@ RSpec.context 'Services' do
         [no_name, nil_name, blank_name].each do |params| 
           expect{ described_class.new(params).call }
             .to raise_error(CategoryExceptions::NameIsEmpty)
-            .and change { Category.count }.by(0)
+            .and not_change { Category.count }
         end
       end
 
@@ -27,7 +27,7 @@ RSpec.context 'Services' do
 
         expect{ described_class.new(params).call }
           .to raise_error(CategoryExceptions::NameAlreadyExists)
-          .and change { Category.count }.by(0)
+          .and not_change { Category.count }
       end
     end
   end
