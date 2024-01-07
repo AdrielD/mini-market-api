@@ -2,9 +2,9 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: localhost
-  username: mini_market
-  password: minimarket123
+  host: <%= ENV.fetch('DATABASE', 'localhost') %>
+  username: <%= ENV.fetch('USERNAME', 'mini_market') %> 
+  password: <%= ENV.fetch('PASSWORD', 'minimarket123') %> 
   # host: db
   # username: postgres
   # password: postgres

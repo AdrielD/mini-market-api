@@ -3,7 +3,7 @@ services:
   web:
     image: adrield/mini-market-api:latest
     ports:
-      - 3000:3000
+      - 3001:3000
     depends_on:
       - db
       # - redis

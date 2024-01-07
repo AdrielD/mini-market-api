@@ -7,6 +7,14 @@ pipeline {
       steps {
         sh 'ruby --version'
         sh 'pwd'
+        sh 'bundle install'
+        sh 'bundle exec rails db:create'
+        sh 'bundle exec rails db:schema:load'
+      }
+    }
+    stage('Test') {
+      steps {
+        sh 'bundle exec rspec'
       }
     }
   }
