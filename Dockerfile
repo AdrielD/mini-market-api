@@ -14,4 +14,4 @@ RUN bundle install --without development test
 
 COPY . ./
 
-CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0", "-p", "3001"]

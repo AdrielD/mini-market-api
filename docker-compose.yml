@@ -1,7 +1,8 @@
 version: '3.4'
 services:
   web:
-    image: adrield/mini-market-api:latest
+    build:
+      context: .
     ports:
       - 3001:3000
     environment:
@@ -20,10 +21,8 @@ services:
   #     - ./tmp/redis_data:/var/lib/redis/data
 
   db:
-    image: postgres
+    image: postgres:16-alpine3.18
     restart: always
-    environment:
-      - POSTGRES_HOST_AUTH_METHOD=trust
     ports:
       - 5432:5432
     volumes:
