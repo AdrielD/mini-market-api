@@ -6,10 +6,7 @@ services:
     ports:
       - 3001:3001
     environment:
-      - DATABASE_HOST=db
-      - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=postgres
-      - DATABASE_NAME=mini_market_dev
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mini_market_dev
     depends_on:
       - db
       # - redis
