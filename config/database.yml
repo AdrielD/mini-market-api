@@ -2,16 +2,16 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 5
-  host: <%= ENV.fetch('DATABASE', 'localhost') %>
-  username: <%= ENV.fetch('USERNAME', 'mini_market') %> 
-  password: <%= ENV.fetch('PASSWORD', 'minimarket123') %> 
+  host: <%= ENV.fetch('DATABASE_HOST', 'localhost') %>
+  username: <%= ENV.fetch('DATABASE_USERNAME', 'mini_market') %> 
+  password: <%= ENV.fetch('DATABASE_PASSWORD', 'minimarket123') %> 
+  database: <%= ENV.fetch('DATABASE_NAME', 'mini_market_dev') %>
   # host: db
   # username: postgres
   # password: postgres
 
 development:
   <<: *default
-  database: mini_market_dev
 
 test:
   <<: *default

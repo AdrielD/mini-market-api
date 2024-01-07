@@ -6,9 +6,10 @@ services:
     ports:
       - 3001:3001
     environment:
-      - DATABASE=db
-      - USERNAME=postgres
-      - PASSWORD=postgres
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+      - DATABASE_NAME=mini_market_dev
     depends_on:
       - db
       # - redis
@@ -21,9 +22,13 @@ services:
   #     - ./tmp/redis_data:/var/lib/redis/data
 
   db:
-    image: postgres:16-alpine3.18
+    image: postgres:16
     restart: always
     ports:
       - 5432:5432
     volumes:
       - ./tmp/postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: mini_market_dev
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres

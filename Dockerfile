@@ -10,7 +10,9 @@ COPY Gemfile Gemfile.lock ./
 
 RUN gem install bundler
 
-RUN bundle install --without development test
+RUN bundle config set without 'development test'
+
+RUN bundle install
 
 COPY . ./
 
