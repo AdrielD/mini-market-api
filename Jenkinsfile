@@ -24,11 +24,11 @@
 pipeline {
   agent any
   stages {
-    stage('Setup') {
+    stage('Test') {
       steps {
-        sh 'docker-compose run -e "RAILS_ENV=test" web bundle exec rails db:create'
-        sh 'docker-compose run -e "RAILS_ENV=test" web bundle exec rails db:schema:load'
-        sh 'docker-compose run -e "RAILS_ENV=test" web bundle install && bundle exec rspec'
+        sh 'docker compose run -e "RAILS_ENV=test" web bundle exec rails db:create'
+        sh 'docker compose run -e "RAILS_ENV=test" web bundle exec rails db:schema:load'
+        sh 'docker compose run -e "RAILS_ENV=test" web bundle install && bundle exec rspec'
       }
     }
   }
