@@ -4,6 +4,10 @@ services:
     image: adrield/mini-market-api:latest
     ports:
       - 3001:3000
+    environment:
+      - DATABASE=db
+      - USERNAME=postgres
+      - PASSWORD=postgres
     depends_on:
       - db
       # - redis

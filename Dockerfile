@@ -14,10 +14,4 @@ RUN bundle install --without development test
 
 COPY . ./
 
-ENV DATABASE=db
-
-ENV USERNAME=postgres
-
-ENV PASSWORD=postgres
-
 CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
